@@ -116,12 +116,7 @@ jobs:
             echo "FORMAT_MKBOOTING=$(echo `tools/unpack_bootimg.py --boot_img=boot-source.img --format mkbootimg`)" >> $GITHUB_ENV
             echo "HAVE_SOURCE_BOOT_IMAGE=true" >> $GITHUB_ENV
         fi
-  
-    - name: Install aarch64-linux-gnu
-      run: |
-        sudo apt-get install gcc-aarch64-linux-gnu
-        export PATH=/usr/aarch64-linux-gnu/bin/:/usr/lib/gcc/x86_64-linux-gnu/9:/usr/lib/gcc/x86_64-linux-gnu/9/lto-wrapper:$PATH
-  
+        
     - name: Setup KernelSU
       if: env.ENABLE_KERNELSU == 'true'
       run: |
@@ -157,7 +152,28 @@ jobs:
       with:
         key: build-kernel-${{ env.DEVICE }}${{ env.UPLOADNAME }}
         max-size: 2G
+  
+    - name: Install aarch64-linux-gnu
+      run: |
+        sudo apt-get install gcc-aarch64-linux-gnu
+        export PATH=/usr/aarch64-linux-gnu/bin/:$PATH
 
+    - name: Install gcc-10.2
+      run: |
+        #cd $GITHUB_WORKSPACE/
+        #mkdir gcc-10-2-0
+        cd gcc-10-2-0/
+        #wget https://ftp.gnu.org/gnu/gcc/gcc-10.2.0/gcc-10.2.0.tar.gz
+        #tar -zxvf gcc-10.2.0.tar.gz
+        cd gcc-10.2.0/
+        #./contrib/download_prerequisites
+        #mkdir build
+        cd build/
+        ../configure --prefix=/usr/local/gcc-10.2.0/ --enable-checking=release --enable-languages=c,c++ --disable-multilib
+        make
+        make install
+        #PATH=$GITHUB_WORKSPACE/gcc-10-2-0/gcc-10.2.0/:$GITHUB_WORKSPACE/gcc-10-2-0/gcc-10.2.0/build:$PATH
+        
     - name: Build kernel
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
