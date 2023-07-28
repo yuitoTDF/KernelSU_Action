@@ -6,7 +6,7 @@ This Branch is for device phoenix, especially Redmi K30.
 
 Goto Release to download package files.
 
-## 感谢
+## Special Thanks
 
 - [KernelSU_Action](https://github.com/xiaoleGun/KernelSU_Action)
 - [AnyKernel3](https://github.com/osm0sis/AnyKernel3)
