@@ -160,19 +160,19 @@ jobs:
 
     - name: Install gcc-10.2
       run: |
-        #cd $GITHUB_WORKSPACE/
-        #mkdir gcc-10-2-0
+        cd $GITHUB_WORKSPACE/
+        mkdir gcc-10-2-0
         cd gcc-10-2-0/
-        #wget https://ftp.gnu.org/gnu/gcc/gcc-10.2.0/gcc-10.2.0.tar.gz
-        #tar -zxvf gcc-10.2.0.tar.gz
+        wget https://ftp.gnu.org/gnu/gcc/gcc-10.2.0/gcc-10.2.0.tar.gz
+        tar -zxvf gcc-10.2.0.tar.gz
         cd gcc-10.2.0/
-        #./contrib/download_prerequisites
-        #mkdir build
+        ./contrib/download_prerequisites
+        mkdir build
         cd build/
         ../configure --prefix=/usr/local/gcc-10.2.0/ --enable-checking=release --enable-languages=c,c++ --disable-multilib
         make
         make install
-        #PATH=$GITHUB_WORKSPACE/gcc-10-2-0/gcc-10.2.0/:$GITHUB_WORKSPACE/gcc-10-2-0/gcc-10.2.0/build:$PATH
+        PATH=$GITHUB_WORKSPACE/gcc-10-2-0/gcc-10.2.0/:$GITHUB_WORKSPACE/gcc-10-2-0/gcc-10.2.0/build:$PATH
         
     - name: Build kernel
       run: |
