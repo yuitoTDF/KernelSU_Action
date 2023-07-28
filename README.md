@@ -1,25 +1,14 @@
-**中文** | [English](README_EN.md)
-
 # KernelSU Action
 
 用于 Non-GKI Kernel 的 Action，具有一定的普遍性，需要了解内核及 Android 的相关知识得以运用。
 
-## 警告:warning: :warning: :warning:
-
-如果你不是内核作者，使用他人的劳动成果构建 KernelSU，请仅供自己使用，不要分享给别人，这是对原作者的劳动成果的尊重。
-
-## 支持内核
-
-- `5.4`
-- `4.19`
-- `4.14`
-- `4.9`
+Fork from github.com/xiaoleGun/KernelSU_Action
 
 ## 使用
 
 > 所有 config.env 内的变量均只判断`true`
 
-> 编译成功后，会在`Action`上传 AnyKernel3，已经关闭设备检查，请在 Twrp 刷入。
+> 编译成功后，会在`Action`上传 AnyKernel3，已经关闭设备检查.
 
 Fork 本仓库到你的储存库然后按照以下内容编辑 config.env，之后点击`Star`或`Action`，在左侧可看见`Build Kernel`选项，点击选项会看见右边的大对话框的上面会有`Run workflows`点击它会启动构建。
 
